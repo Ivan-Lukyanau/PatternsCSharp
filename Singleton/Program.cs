@@ -104,4 +104,18 @@
     // что внутри конструкции lock?
     // как устроен внутки yield?
 
+    /*
+     * Singleton с отложенной инициализацией.
+        Чаще всего метод Instance использует отложенную (ленивую) инициализацию,
+        т.е., экземпляр не создается и не хранится вплоть до первого вызова метода
+        Instance. Для реализации техники отложенной инициализации в C# рекомендуется воспользоваться классом Lazy<T>, 
+        причем по умолчанию экземпляры класса Lazy<T> являются потокобезопасными.
+     */
+
+
+    internal sealed class LazySingleton
+    {
+        static Lazy<LazySingleton> instance = new Lazy<LazySingleton>();
+        public static LazySingleton Instance { get { return instance.Value; } }
+    }
 }

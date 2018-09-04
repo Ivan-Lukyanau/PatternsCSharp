@@ -115,7 +115,7 @@
 
     internal sealed class LazySingleton
     {
-        static Lazy<LazySingleton> instance = new Lazy<LazySingleton>();
-        public static LazySingleton Instance { get { return instance.Value; } }
+        static Lazy<LazySingleton> _instance = new Lazy<LazySingleton>();
+        public static LazySingleton Instance => _instance.Value;
     }
 }
